@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import find_packages, setup
 from typing import List
 
 #Declaring Variable for Project
@@ -6,7 +6,7 @@ PROJECT_NAME= "housing-predictor"
 VERSION="0.0.1"
 AUTHOR="Pranay"
 DESCRIPTION="This is a first FSDS Machine Learning Project"
-PACKAGES=["housing"]
+    
 REQUIREMENT_FILE_NAME="requirements.txt"
 
 
@@ -20,7 +20,7 @@ def get_requirements_list()->List[str]:
 
     """
     with open(REQUIREMENT_FILE_NAME) as requirement_file:
-        return requirement_file.readlines()
+        return requirement_file.readlines().remove("-e .")
 
 
 
@@ -29,7 +29,7 @@ name=PROJECT_NAME,
 version=VERSION,
 author=AUTHOR,
 description=DESCRIPTION,
-packages=PACKAGES,
+packages=find_packages(),
 install_requires=get_requirements_list()
 
 )
